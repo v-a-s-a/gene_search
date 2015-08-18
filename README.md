@@ -1,2 +1,3 @@
 # gene_search
-A search interface to genetic data
+A search interface to genetic data. 
+
