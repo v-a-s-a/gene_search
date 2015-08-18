@@ -1,0 +1,26 @@
+UCSC genePred format conversion of GENCODE gtf files
+----------------------------------------------------
+
+The resources here contain the conversion of GENCODE resources into UCSC genePred format. 
+Notably, these resources have the following features.
+
+1. The format follows genePredExt format as specified in http://genome.ucsc.edu/FAQ/FAQformat#format9
+
+2. The name2 (12-th) column contains the canonical gene symbol (e.g. LDLR)
+
+3. There is an additional (16-th) column, which contains the gene_id (e.g. ENSG...) from GTF.
+
+4. The output file is coordinate-sorted, bgzipped and tabixed (based on 2nd, 4th, and 5th columns). 
+   So random access is possible using the tabix software, with the following example
+   $ tabix gencode.v19.genePred.hg19.txt.gz chr20:10000000-11000000
+
+5. The genome builds to create the GTF resources are contained within the file name (e.g. hg19 or hg38). 
+
+These file were generated from the gtf2GenePred available at https://github.com/hyunminkang/apigenome
+
+$ gtf2GenePred --gtf [in.gtf] --out [out.genePred.txt.gz]
+
+I do not claim any intellectual property on this resource but any restriction imposed by GENCODE may still remain.
+See ftp://ftp.sanger.ac.uk/pub/gencode/Gencode_human/_README.TXT for further details.
+
+Last modifieid by Hyun Min Kang on August 5, 2015. 
