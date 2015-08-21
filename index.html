@@ -2,28 +2,16 @@
 <html lang="en" ng-app="geneAdventure">
     <head>
         <title>GeneAdventure</title>
-
         <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
     </head>
-    <body ng-controller="geneSearchController as searchCtrl">
-
-    <div id="banner" class="page-header" style="font-family: 'VT323', serif;">
-      <h1> Welcome to your gene search adventure! </h1>
-    <div/>
-
-    <div class="container-fluid" id="search-box" style="font-family: 'VT323', serif;">
-        <span>
-          Enter a gene symbol:
-          <input type="text" name="geneSearch" class="form-control"
-            ng-model="selected"
-            typeahead="gene for gene in genes | filter:$viewValue:startsWith | orderBy:'toString()' | orderBy:'length' | limitTo:5"
-            placeholder="e.g. APOE, TCF7L2">
-        </span>  
-    </div>
-		
-		<script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="js/app.js"></script>
+    <body>
+      <div ng-view></div>
     </body>
 </html>
