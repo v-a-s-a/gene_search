@@ -1,0 +1,15 @@
+<div id="banner" class="page-header" style="font-family: 'VT323', serif;">
+  <h1> Welcome to your gene search adventure! </h1>
+<div/>
+
+<div class="container-fluid" id="search-box" style="font-family: 'VT323', serif;">
+   <span>
+    Enter a gene symbol:
+    <form ng-submit="submitQuery(query)">
+      <input type="text" name="geneSearch" class="form-control"
+        ng-model="query"
+        typeahead="gene for gene in genes | filter:$viewValue:startsWith | orderBy:'toString()' | orderBy:'length' | limitTo:5"
+        placeholder="e.g. APOE, TCF7L2.">
+    </form>  
+   </span>
+</div>
