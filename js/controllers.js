@@ -2,16 +2,16 @@
 
 var geneAdventureControllers = angular.module('geneAdventureControllers', []);
 
+
 // controller for search box
 geneAdventureControllers.controller('geneSearchController', ['$scope',
                                                              '$http',
                                                              '$location',
-                                                             'geneData',
-    function($scope, $http, $location, geneData){
-    //load gene data
-    geneData.loadGenes().then(function(data) {
-      $scope.geneInfo = data;
-      $scope.genes = Object.keys($scope.geneInfo);
+                                                             'regionData',
+    function($scope, $http, $location, regionData){
+    //load region data
+    regionData.searchRegions().then(function(data) {
+      $scope.regions = data;
       });
 
     // match on leading characters
@@ -24,16 +24,17 @@ geneAdventureControllers.controller('geneSearchController', ['$scope',
     $scope.submitQuery = function(query){
       $location.path('/genes/' + query);
       }
+
   }]);
 
 
 // controller for displaying a gene
 geneAdventureControllers.controller('geneDisplayController', ['$scope',
                                                               '$routeParams',
-                                                              'geneData',
-  function($scope, $routeParams, geneData) {
+                                                              'regionData',
+  function($scope, $routeParams, regionData) {
     // load gene data
-    geneData.loadGenes().then(function(data) {
+    geneData.searchRegions().then(function(data) {
       $scope.geneInfo = data;
       $scope.genes = Object.keys($scope.geneInfo);
       $scope.selectedGene = $routeParams.geneSymbol;

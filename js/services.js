@@ -2,13 +2,13 @@
 
 var geneAdventureServices = angular.module('geneAdventureServices', []);
 
-geneAdventureServices.service('geneData', ['$http', '$q', function($http, $q) {
-    var deferedGeneData = $q.defer();
-    this.loadGenes = function() {
-      var geneInfo = $http.get('data/gencode.v19.genePred.hg19.json').success(function(data){
-          deferedGeneData.resolve(data);
+geneAdventureServices.service('regionData', ['$http', '$q', function($http, $q) {
+    var deferedRegionData = $q.defer();
+    this.searchRegions = function(startswith) {
+      var regionInfo = $http.get('http://localhost:9000/v1/regionSearch?startswith='+startswith).success(function(data){
+          deferedRegionData.resolve(data);
         });
-      return deferedGeneData.promise;
+      return deferedRegionData.promise;
       };
-    this.geneInfo = this.loadGenes().then(function(data){return data});
+    this.regionInfo = this.searchRegions().then(function(data){return data});
     }]);
