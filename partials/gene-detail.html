@@ -1,9 +1,3 @@
-<div class="page-header" style="font-family: 'VT323', serif;">
-  <h1> {{selectedGene}} </h1>
+<div class="col-xs-3" style="font-family: 'VT323', serif;">
+  <h1> you have chosen: <br> {{selectedGene}} </h1>
 <div/>
-<div ng-repeat="field in interestingFields">
-  <div class="panel panel-default">
-    <div class=panel-heading"> {{field}} </div>
-    <div class="panel-body"> {{selectedGeneData[field]}} </div>
-  </div>
-</div>
