@@ -7,12 +7,20 @@ var geneAdventureControllers = angular.module('geneAdventureControllers', []);
 geneAdventureControllers.controller('geneSearchController', ['$scope',
                                                              '$http',
                                                              '$location',
-                                                             'regionData',
-    function($scope, $http, $location, regionData){
-    //load region data
-    regionData.searchRegions().then(function(data) {
-      $scope.regions = data;
-      });
+    function($scope, $http, $location){
+
+    // ask server for 10 regions with name that start with
+    $scope.searchRegions = function(val) {
+      return $http.get('http://localhost:9000/v1/regionSearch', {
+        params: {
+          startswith: val,
+        }
+      }).then(function(response){
+          console.log(response);
+          return response.data;
+        });
+    };
+
 
     // match on leading characters
     // http://stackoverflow.com/questions/18429967/angularjs-ui-typeahead-match-on-leading-characters
@@ -31,18 +39,8 @@ geneAdventureControllers.controller('geneSearchController', ['$scope',
 // controller for displaying a gene
 geneAdventureControllers.controller('geneDisplayController', ['$scope',
                                                               '$routeParams',
-                                                              'regionData',
-  function($scope, $routeParams, regionData) {
-    // load gene data
-    geneData.searchRegions().then(function(data) {
-      $scope.geneInfo = data;
-      $scope.genes = Object.keys($scope.geneInfo);
-      $scope.selectedGene = $routeParams.geneSymbol;
-      $scope.selectedGeneData = $scope.geneInfo[$scope.selectedGene];     
-    });
-
-    // define gene data fields of interest
-    $scope.interestingFields = ["name", "chrom", "txStart", "txEnd"]
+  function($scope, $routeParams) {
+    $scope.selectedGene = $routeParams.geneSymbol;
 
   }]);
 
