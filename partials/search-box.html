@@ -3,7 +3,7 @@
     <p>
       hello, <br> 
       please enter a <br>
-      gene or transcript
+      gene symbol or transcript name
       </p>
   </div>
   <div class="col-xs-6">
@@ -11,7 +11,7 @@
       <input type="text" name="geneSearch" class="form-control"
          ng-model="query"
          typeahead="region for region in searchRegions($viewValue) | orderBy:'toString()' | orderBy:'length' | limitTo:10"
-         placeholder="e.g. APOE, TCF7L2.">
+         placeholder="e.g. APOE or ENSG00000223972.5">
     </form>  
   </div>  
 </div>
