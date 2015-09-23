@@ -11,9 +11,9 @@ geneAdventureControllers.controller('geneSearchController', ['$scope',
 
     // ask server for 10 regions with name that start with
     $scope.searchRegions = function(val) {
-      return $http.get('http://localhost:9000/v1/regionSearch', {
+      return $http.get('http://localhost:9000/v1/genes/names/', {
         params: {
-          startswith: val,
+          filter: 'name startswith ' + '\'' + val + '\'',
         }
       }).then(function(response){
           return response.data;
