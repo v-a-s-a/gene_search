@@ -1,3 +1,3 @@
 # gene_search
-A search interface to genetic data. 
+An experiment in creating a gene search bar in Typescript.
 
